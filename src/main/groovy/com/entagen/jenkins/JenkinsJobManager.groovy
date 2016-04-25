@@ -108,7 +108,7 @@ class JenkinsJobManager {
             TemplateJob templateJob = null
             //jobName.find(regex) { full, baseJobName, branchName ->
                 jobName.find(regex) { full, branchName, onlyJobName ->
-                baseJobName = "$templateJobPrefix_$onlyJobName"
+                baseJobName = templateJobPrefix + '_' + onlyJobName
                 println "full = $full"
                 println "branchName = $branchName"
                 println "baseJobName = $baseJobName"
