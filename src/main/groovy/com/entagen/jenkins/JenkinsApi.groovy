@@ -73,6 +73,7 @@ class JenkinsApi {
     }
 
     String configForMissingJob(ConcreteJob missingJob, List<TemplateJob> templateJobs) {
+        println "DEBUG: configForMissingJob"
         TemplateJob templateJob = missingJob.templateJob
         String config = getJobConfig(templateJob.jobName)
 
@@ -127,6 +128,7 @@ class JenkinsApi {
     }
 
     protected String buildViewPath(String pathSuffix, String... nestedViews) {
+        println "DEBUG: buildViewPath"
         List elems = nestedViews.findAll { it != null }
         String viewPrefix = elems.collect { "view/${it}" }.join('/')
 
