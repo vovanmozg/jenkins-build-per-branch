@@ -107,6 +107,7 @@ class JenkinsJobManager {
             TemplateJob templateJob = null
             //jobName.find(regex) { full, baseJobName, branchName ->
                 jobName.find(regex) { full, branchName, baseJobName ->
+                println "full = $full"
                 println "branchName = $branchName"
                 println "baseJobName = $baseJobName"
                 templateJob = new TemplateJob(jobName: full, baseJobName: baseJobName, templateBranchName: branchName)
