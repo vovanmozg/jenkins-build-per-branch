@@ -95,27 +95,7 @@ class JenkinsJobManager {
     }
 
 
-    List<TemplateJob> findRequiredTemplateJobs(List<String> allJobNames) {
-        String regex = /^($templateJobPrefix-[^-]*)-($templateBranchName)$/
-
-        println "templateJobPrefix = $templateJobPrefix"
-        println "templateBranchName = $templateBranchName"
-
-        List<TemplateJob> templateJobs = allJobNames.findResults { String jobName ->
-            TemplateJob templateJob = null
-            jobName.find(regex) { full, baseJobName, branchName ->
-                println "full = $full"
-                println "branchName = $branchName"
-                println "baseJobName = $baseJobName"
-                templateJob = new TemplateJob(jobName: full, baseJobName: baseJobName, templateBranchName: branchName)
-            }
-            return templateJob
-        }
-
-        assert templateJobs?.size() > 0, "Unable to find any jobs matching template regex: $regex\nYou need at least one job to match the templateJobPrefix and templateBranchName suffix arguments"
-        return templateJobs
-    }
-    /*
+    
     List<TemplateJob> findRequiredTemplateJobs(List<String> allJobNames) {
         //String regex = /^($templateJobPrefix-[^-]*)-($templateBranchName)$/
         // template_v2_GIT_REPO_NAME_develop-Deploy
@@ -140,7 +120,7 @@ class JenkinsJobManager {
         assert templateJobs?.size() > 0, "Unable to find any jobs matching template regex: $regex\nYou need at least one job to match the templateJobPrefix and templateBranchName suffix arguments"
         return templateJobs
     }
-    */
+    
 
     public void syncViews(List<String> allBranchNames) {
         List<String> existingViewNames = jenkinsApi.getViewNames(this.nestedView)
