@@ -90,6 +90,9 @@ class JenkinsJobManager {
 
     public List<ConcreteJob> expectedJobs(List<TemplateJob> templateJobs, List<String> branchNames) {
         println "DEBUG: expectedJobs"
+        println "templateJobs = $templateJobs"
+        println "branchNames = $branchNames"
+
         branchNames.collect { String branchName ->
             templateJobs.collect { TemplateJob templateJob -> templateJob.concreteJobForBranch(branchName) }
         }.flatten()
