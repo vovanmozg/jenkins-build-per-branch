@@ -47,9 +47,14 @@ class JenkinsJobManager {
     }
 
     public void syncJobs(List<String> allBranchNames, List<String> allJobNames, List<TemplateJob> templateJobs) {
-        println "DEBUG: syncJobs"
+        println "DEBUG: syncJobs()"
+        println "DEBUG: allBranchNames = $allBranchNames"
+        println "DEBUG: allJobNames = $allJobNames"
+        println "DEBUG: templateJobs = $templateJobs"
         List<String> currentTemplateDrivenJobNames = templateDrivenJobNames(templateJobs, allJobNames)
+        println "DEBUG: currentTemplateDrivenJobNames = $currentTemplateDrivenJobNames"
         List<String> nonTemplateBranchNames = allBranchNames - templateBranchName
+        println "DEBUG: nonTemplateBranchNames = $nonTemplateBranchNames"
         List<ConcreteJob> expectedJobs = this.expectedJobs(templateJobs, nonTemplateBranchNames)
 
         createMissingJobs(expectedJobs, currentTemplateDrivenJobNames, templateJobs)
