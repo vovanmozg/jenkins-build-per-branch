@@ -8,3 +8,4 @@ build
 .DS_Store
 out
 atlassian-ide-plugin.xml
+.idea
