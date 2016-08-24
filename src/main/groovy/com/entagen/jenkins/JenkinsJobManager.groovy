@@ -120,7 +120,7 @@ class JenkinsJobManager {
         //String regex = /^($templateJobPrefix-[^-]*)-($templateBranchName)$/
         // template_v2_GIT_REPO_NAME_develop-Deploy
         // sensbot_develop_Deploy
-        String regex = /^template_v2_GIT_REPO_NAME-($templateBranchName)-([^-]+)$/
+        String regex = /^template_v3_GIT_REPO_NAME-($templateBranchName)-([^-]+)$/
 
         //println "templateJobPrefix = $templateJobPrefix"
         //println "templateBranchName = $templateBranchName"
